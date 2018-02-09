@@ -17,6 +17,7 @@ import java.util.List;
 @RequestMapping(value = "/api/v1/customers")
 @Api(value = "/api/v1/customers", description = "Manage customers")
 public class CustomerController {
+
     private CustomerService service;
 
     @Autowired
@@ -29,8 +30,8 @@ public class CustomerController {
     public ResponseEntity<Customer> getCustomer(
             @ApiParam(value = "Id of customer to lookup for", required = true)
             @PathVariable String id) {
-        Customer customer = service.find(id);
-        return new ResponseEntity<>(customer, HttpStatus.OK);
+
+        return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
     @ApiOperation(
@@ -40,8 +41,8 @@ public class CustomerController {
     public ResponseEntity<Customer> updateCustomer(
             @ApiParam(value = "Customer instance", required = true)
             @RequestBody Customer customer) {
-        customer = service.save(customer);
-        return new ResponseEntity<>(customer, HttpStatus.OK);
+
+        return new ResponseEntity<>(service.save(customer), HttpStatus.OK);
     }
 
     @ApiOperation(
@@ -51,8 +52,8 @@ public class CustomerController {
     public ResponseEntity<Customer> newCustomer(
             @ApiParam(value = "Customer instance", required = true)
             @RequestBody Customer customer) {
-        customer = service.save(customer);
-        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+
+        return new ResponseEntity<>(service.save(customer), HttpStatus.CREATED);
     }
 
     @ApiOperation(
@@ -65,6 +66,7 @@ public class CustomerController {
     public ResponseEntity<List<Customer>> getAllCustomer(
             @RequestParam int page,
             @RequestParam int size) {
+
         List<Customer> customers = service.findAll(new PageRequest(page, size));
         return new ResponseEntity(customers, HttpStatus.OK);
     }
@@ -74,6 +76,7 @@ public class CustomerController {
     public ResponseEntity deleteCustomer(
             @ApiParam(value = "Customer id", required = true)
             @PathVariable String id) {
+
         service.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
@@ -83,12 +86,7 @@ public class CustomerController {
     public ResponseEntity isCustomerExist(
             @ApiParam(value = "Id of customer to lookup for", required = true)
             @PathVariable String id) {
-        Customer customer = service.find(id);
-        if ((customer != null) && id.equals(customer.getId())) {
-            return new ResponseEntity<>(HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
 
+            return new ResponseEntity<>(service.exist(id));
     }
 }

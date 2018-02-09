@@ -29,8 +29,8 @@ public class SubscriberController {
     public ResponseEntity<Subscriber> getSubscriber(
             @ApiParam(value = "Id of subscriber to lookup for", required = true)
             @PathVariable String id) {
-        Subscriber subscriber = service.find(id);
-        return new ResponseEntity<>(subscriber, HttpStatus.OK);
+
+        return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
     @ApiOperation(
@@ -40,8 +40,8 @@ public class SubscriberController {
     public ResponseEntity<Subscriber> updateSubscriber(
             @ApiParam(value = "Subscriber instance", required = true)
             @RequestBody Subscriber subscriber) {
-        subscriber = service.save(subscriber);
-        return new ResponseEntity<>(subscriber, HttpStatus.OK);
+
+        return new ResponseEntity<>(service.save(subscriber), HttpStatus.OK);
     }
 
     @ApiOperation(
@@ -51,8 +51,8 @@ public class SubscriberController {
     public ResponseEntity<Subscriber> newSubscriber(
             @ApiParam(value = "Subscriber instance", required = true)
             @RequestBody Subscriber subscriber) {
-        subscriber = service.save(subscriber);
-        return new ResponseEntity<>(subscriber, HttpStatus.CREATED);
+
+        return new ResponseEntity<>(service.save(subscriber), HttpStatus.CREATED);
     }
 
     @ApiOperation(
@@ -65,6 +65,7 @@ public class SubscriberController {
     public ResponseEntity<List<Subscriber>> getAllSubscriber(
             @RequestParam int page,
             @RequestParam int size) {
+
         List<Subscriber> subscribers = service.findAll(new PageRequest(page, size));
         return new ResponseEntity(subscribers, HttpStatus.OK);
     }
@@ -74,6 +75,7 @@ public class SubscriberController {
     public ResponseEntity deleteSubscriber(
             @ApiParam(value = "Subscriber id", required = true)
             @PathVariable String id) {
+
         service.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
@@ -83,6 +85,7 @@ public class SubscriberController {
     public ResponseEntity deleteSubscribers(
             @ApiParam(value = "Customer id", required = true)
             @RequestParam String customerId) {
+
         service.deleteAll(customerId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }

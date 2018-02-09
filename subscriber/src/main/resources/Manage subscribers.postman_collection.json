@@ -1,0 +1,155 @@
+{
+	"info": {
+		"name": "Manage subscribers",
+		"_postman_id": "8de3e293-a9a8-a20a-35b4-261543c7f6ae",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get subscribers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/subscribers?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"subscribers"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"equals": true
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create subscriber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": \"5a7d7d1568c4141e80774be9\",\r\n  \"displayName\": \"SubTCMS\",\r\n  \"email\": \"subtcms@tcms.tcms\",\r\n  \"id\": \"5a7d894168c414286c34e2b1\",\r\n  \"name\": \"Sub\",\r\n  \"surname\": \"TCMS\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/subscribers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"subscribers"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update subscriber",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"5a7d894168c414286c34e2b1\",\r\n  \"name\": \"Sub\",\r\n  \"surname\": \"TCMS\",\r\n  \"email\": \"subtcms@tcms.tcms\",\r\n  \"customerId\": \"5a7d7d1568c4141e80774be9\",\r\n  \"displayName\": \"NoTCMS\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/subscribers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"subscribers"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete subscriber",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/subscribers/5a7d894168c414286c34e2b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"subscribers",
+						"5a7d894168c414286c34e2b1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Find sibscriber by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/subscribers/5a7d894168c414286c34e2b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"subscribers",
+						"5a7d894168c414286c34e2b1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

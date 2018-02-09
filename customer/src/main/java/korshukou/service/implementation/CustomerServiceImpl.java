@@ -6,6 +6,7 @@ import korshukou.service.CustomerService;
 import korshukou.web.client.SubscriberClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -52,5 +53,15 @@ public class CustomerServiceImpl implements CustomerService {
         client.deleteAllByCustomerId(id);
         repository.delete(id);
         LOGGER.info("Deleted customers with id: " + id);
+    }
+
+    @Override
+    public HttpStatus exist(String id) {
+        Customer customer = find(id);
+        if ((customer != null) && id.equals(customer.getId())) {
+            return HttpStatus.OK;
+        } else {
+            return HttpStatus.NO_CONTENT;
+        }
     }
 }
