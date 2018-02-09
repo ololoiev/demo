@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      database: subscriber
+      port: 27017
+      host: localhost
+server:
+  port: 8081
+logging:
+  file: subscriber/logs/logfile.log
+serviceUrl:
+  customer: http://localhost:8080
