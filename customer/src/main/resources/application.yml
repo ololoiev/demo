@@ -9,4 +9,4 @@ server:
 logging:
   file: customer/logs/logfile.log
 serviceUrl:
-  subscriber: http://localhost:8081
+  subscriber: https://localhost:8081
