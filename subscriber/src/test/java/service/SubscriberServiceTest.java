@@ -51,7 +51,7 @@ public class SubscriberServiceTest {
     @Test
     public void find(){
         service.find(ID);
-        verify(repository).findOne(ID);
+        verify(repository).findById(ID);
     }
 
     @Test(expected = NullPointerException.class)
@@ -63,7 +63,7 @@ public class SubscriberServiceTest {
     @Test
     public void delete(){
         service.delete(ID);
-        verify(repository).delete(ID);
+        verify(repository).deleteById(ID);
     }
 
     @Test

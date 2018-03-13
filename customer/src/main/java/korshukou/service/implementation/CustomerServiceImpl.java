@@ -37,7 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer find(String id) {
         LOGGER.info("Searching customer with id: " + id);
-        return repository.findOne(id);
+        return repository.findById(id).get();
     }
 
     @Override
@@ -50,8 +50,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void delete(String id) {
         LOGGER.info("Delete customer with id: " + id);
-        client.deleteAllByCustomerId(id);
-        repository.delete(id);
+        //client.deleteAllByCustomerId(id);
+        repository.deleteById(id);
         LOGGER.info("Deleted customers with id: " + id);
     }
 

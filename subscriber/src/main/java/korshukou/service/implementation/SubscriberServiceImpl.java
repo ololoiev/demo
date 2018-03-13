@@ -5,7 +5,6 @@ import korshukou.entity.Subscriber;
 import korshukou.service.SubscriberService;
 import korshukou.web.client.CustomerClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +42,7 @@ public class SubscriberServiceImpl implements SubscriberService{
     @Override
     public Subscriber find(String id) {
         LOGGER.info("Searching subscriber with id: " + id);
-        return repository.findOne(id);
+        return repository.findById(id).get();
     }
 
     @Override
@@ -56,7 +55,7 @@ public class SubscriberServiceImpl implements SubscriberService{
     @Override
     public void delete(String id) {
         LOGGER.info("Delete subscriber with id: " + id);
-        repository.delete(id);
+        repository.deleteById(id);
         LOGGER.info("Deleted subscriber with id: " + id);
     }
 
