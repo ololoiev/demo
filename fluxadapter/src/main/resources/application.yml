@@ -1,0 +1,4 @@
+server:
+  port: 8084
+serviceUrl:
+  customer: http://localhost:8080/api/v2/customers/
