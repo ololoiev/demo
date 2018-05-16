@@ -10,7 +10,9 @@
 		<module>customer</module>
 		<module>subscriber</module>
         <module>loadproducer</module>
-    </modules>
+        <module>FluxAdapter</module>
+		<module>fluxadapter</module>
+	</modules>
 	<packaging>pom</packaging>
 
 	<name>demo</name>
